@@ -1,0 +1,19 @@
+{
+  "name": "dsn-parser",
+  "version": "1.0.0",
+  "description": "Parse and create database connection strings fluently",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "author": { 
+    "name": "Jonnas Fonini",
+    "email": "jonnasfonini@gmail.com",
+    "url": "https://fonini.github.io"
+  },
+  "license": "WTFPL",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}

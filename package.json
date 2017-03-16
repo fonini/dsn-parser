@@ -11,6 +11,18 @@
     "email": "jonnasfonini@gmail.com",
     "url": "https://fonini.github.io"
   },
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/fonini/dsn-parser.git"
+  },
+  "bugs": "https://github.com/fonini/dsn-parser/issues",
+  "keywords": [
+    "dsn",
+    "parse",
+    "jdbc",
+    "odbc",
+    "database"
+  ],
   "license": "WTFPL",
   "devDependencies": {
     "chai": "^3.5.0",

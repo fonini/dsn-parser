@@ -42,12 +42,25 @@ describe('#DSNParser', function () {
 		var dsn = new DSNParser('mysql://root@localhost/dbname');
 
 		expect(dsn.getParts()).deep.equal({driver: 'mysql',
-  			user: 'root',
-  			password: null,
-  			host: 'localhost',
-  			port: null,
-  			database: 'dbname',
-  			params: {}
-  		});
+			user: 'root',
+			password: null,
+			host: 'localhost',
+			port: null,
+			database: 'dbname',
+			params: {}
+		});
+	});
+
+	it('should change database name and add another parameter', function () {
+		var dsn = new DSNParser('pgsql://user:pass@127.0.0.1:5432/my_db?sslmode=verify-full');
+
+		dsn.set('database', 'another_db');
+
+		var params = dsn.get('params');
+		params.application_name = 'myapp';
+
+		dsn.set('params', params);
+
+		expect(dsn.getDSN()).to.equal('pgsql://user:pass@127.0.0.1:5432/another_db?sslmode=verify-full&application_name=myapp');
 	});
 });

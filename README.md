@@ -3,6 +3,19 @@ DSN Parser for Node
 
 Parse and create database connection strings fluently.
 
+## Use case
+
+I've setup a node app on [Heroku](https://www.heroku.com) and added a PostgreSQL database. Heroku provides the database credentials
+as an enviroment variable with the following form: `pgsql://user:pass@127.0.0.1:5432/my_db`. 
+
+I needed to parse it to the following way, in order to use with [node-postgres]() package:
+
+````js
+var config = new DSNParser(process.env.HEROKU_POSTGRESQL_COPPER_URL).getParts();
+
+var pool = new pg.Pool(config);
+````
+
 ## Installation
 
 `npm install dsn-parser`

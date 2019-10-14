@@ -35,7 +35,7 @@ DSNParser.prototype.parse = function () {
 	);
 
 	var split = this.dsn.match(regexp);
-	var auth = split[2].split(':');
+	var auth = split[2]?split[2].split(':'):[];
 
 	this.parts = {
 		'driver': split[1],
@@ -73,8 +73,10 @@ DSNParser.prototype.set = function (prop, value) {
 
 DSNParser.prototype.getDSN = function () {
 	var dsn = (this.parts.driver || '') + '://'
-				+ (this.parts.user || '')
-				+ (this.parts.password ? ':' + this.parts.password : '') + '@'
+				+ (this.parts.user ? (
+					(this.parts.user || '')
+					+ (this.parts.password ? ':' + this.parts.password : '') + '@')
+					: '')
 				+ (this.parts.host || '') 
 				+ (this.parts.port ? ':' + this.parts.port : '') + '/'
 				+ (this.parts.database || '');

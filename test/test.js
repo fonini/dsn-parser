@@ -63,4 +63,9 @@ describe('#DSNParser', function () {
 
 		expect(dsn.getDSN()).to.equal('pgsql://user:pass@127.0.0.1:5432/another_db?sslmode=verify-full&application_name=myapp');
 	});
+	it('should work without credentials', function () {
+		const dsnString='mongodb://127.0.0.1:5432/my_db';
+		var dsn = new DSNParser(dsnString);
+		expect(dsn.getDSN()).to.equal(dsnString)
+	})
 });

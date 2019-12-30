@@ -60,7 +60,9 @@ dsn.getDSN();
 ````js
 var DSNParser = require('dsn-parser');
 
-dsn.set('driver', 'mysql')
+var dsn = new DSNParser();
+
+DSNParser.set('driver', 'mysql')
 	.set('user', 'root')
 	.set('password', 'mypass')
 	.set('host', 'localhost')
@@ -71,7 +73,7 @@ dsn.set('driver', 'mysql')
 		strict: true
 	});
 
-dsn.getDSN();
+DSNParser.getDSN();
 
 // mysql://root:mypass@localhost:3306/7gh4d78sh2?charset=utf8&strict=true
 ````

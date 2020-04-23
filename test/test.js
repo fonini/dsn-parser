@@ -67,5 +67,12 @@ describe('#DSNParser', function () {
 		const dsnString='mongodb://127.0.0.1:5432/my_db';
 		var dsn = new DSNParser(dsnString);
 		expect(dsn.getDSN()).to.equal(dsnString)
-	})
+	});
+
+    it('should work without slash after host:port', function () {
+        const dsnString='clickhouse://127.0.0.1:9000?username=admin&password=admin&database=default';
+        const controlDsnString='clickhouse://127.0.0.1:9000/?username=admin&password=admin&database=default';
+        var dsn = new DSNParser(dsnString);
+        expect(dsn.getDSN()).to.equal(controlDsnString)
+    })
 });

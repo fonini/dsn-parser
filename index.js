@@ -40,7 +40,7 @@ DSNParser.prototype.parse = function () {
 	this.parts = {
 		'driver': split[1],
 		'user': auth[0] || null,
-		'password': auth[1] || null, 
+		'password': auth[1] || null,
 		'host': split[3],
 		'port': split[4] ? parseInt(split[4], 10) : null,
 		'database': stripLeadingSlash(split[5]),
@@ -61,7 +61,7 @@ DSNParser.prototype.get = function (prop, def) {
 	if (typeof(def) !== 'undefined') {
 		return def;
 	}
-	
+
 	return null;
 };
 
@@ -77,7 +77,7 @@ DSNParser.prototype.getDSN = function () {
 					(this.parts.user || '')
 					+ (this.parts.password ? ':' + this.parts.password : '') + '@')
 					: '')
-				+ (this.parts.host || '') 
+				+ (this.parts.host || '')
 				+ (this.parts.port ? ':' + this.parts.port : '') + '/'
 				+ (this.parts.database || '');
 
@@ -109,6 +109,7 @@ function toQueryParams (obj) {
 }
 
 function stripLeadingSlash (str) {
+    str = str || '';
 	if (str.substr(0, 1) === '/') {
 		return str.substr(1, str.length);
 	}
